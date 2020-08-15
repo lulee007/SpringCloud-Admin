@@ -14,7 +14,7 @@ const getters = {
   nacosServer: state => state.api.nacosServer,
   sentinelDashboard: state => state.api.sentinelDashboard,
   mossServer: state => state.api.mossServer,
-  swaggerApi: state => state.api.swaggerApi
-
+  swaggerApi: state => state.api.swaggerApi,
+  permissions: state => state.user.permissions
 }
 export default getters

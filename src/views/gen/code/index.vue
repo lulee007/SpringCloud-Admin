@@ -41,9 +41,9 @@
         <el-form-item label="entity包名称" prop="packageName">
           <el-input v-model="table.param.packageName" placeholder="若为空，则加载默认配置"></el-input>
         </el-form-item>
-        <el-form-item label="query包名称" prop="queryPackageName">
-          <el-input v-model="table.param.queryPackageName" placeholder="若为空，则加载默认配置"></el-input>
-        </el-form-item>
+<!--        <el-form-item label="query包名称" prop="queryPackageName">-->
+<!--          <el-input v-model="table.param.queryPackageName" placeholder="若为空，则加载默认配置"></el-input>-->
+<!--        </el-form-item>-->
         <el-form-item label="mapper包名称" prop="mapperPackageName" v-if="table.param.genType == 'mybatis'">
           <el-input v-model="table.param.mapperPackageName" placeholder="若为空，则加载默认配置"></el-input>
         </el-form-item>
