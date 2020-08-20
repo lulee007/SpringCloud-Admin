@@ -9,7 +9,6 @@ import Layout from '@/layout'
 /* Router Modules */
 import organizationRouter from './modules/organization'
 import devopsRouter from './modules/deops'
-import devCentreRouter from './modules/devcentre'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -106,7 +105,6 @@ export const asyncRoutes = [
   /** when your routing map is too long, you can split it into small modules **/
   organizationRouter,
   devopsRouter,
-  devCentreRouter,
   // nestedRouter,
   // tableRouter,
   {

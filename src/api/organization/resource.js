@@ -44,10 +44,4 @@ export function deleteResource(id) {
     method: 'delete'
   })
 }
-export function getAllReourceTree() {
-  return request({
-    url: '/organization/resource/tree',
-    method: 'get'
-  })
-}
 

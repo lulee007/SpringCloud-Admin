@@ -1,17 +1,13 @@
 import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import router, { resetRouter } from '@/router'
-import { setStore, getStore } from '@/utils/store'
 
 const state = {
   token: getToken(),
   name: '',
   avatar: '',
   introduction: '',
-  roles: [],
-  permissions: getStore({
-    name: 'permissions'
-  }) || {}
+  roles: []
 }
 
 const mutations = {
@@ -29,18 +25,6 @@ const mutations = {
   },
   SET_ROLES: (state, roles) => {
     state.roles = roles
-  },
-  SET_PERMISSION: (state, permissions) => {
-    const list = {}
-    for (let i = 0; i < permissions.length; i++) {
-      list[permissions[i]] = true
-    }
-    state.permissions = list
-    setStore({
-      name: 'permissions',
-      content: state.permissions,
-      type: 'session'
-    })
   }
 }
 
@@ -65,11 +49,13 @@ const actions = {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
         const { data } = response
+
         if (!data) {
           reject('Verification failed, please Login again.')
         }
 
-        const { name, description, avatar, permissions } = data
+        const { name, description } = data
+
         // roles must be a non-empty array
         // if (!roleIds || roleIds.length <= 0) {
         //   reject('getInfo: roles must be a non-null array!')
@@ -77,9 +63,8 @@ const actions = {
 
         commit('SET_ROLES', ['admin'])
         commit('SET_NAME', name)
-        commit('SET_AVATAR', avatar)
+        commit('SET_AVATAR', 'https://avatars3.githubusercontent.com/u/3946731?s=460&v=4')
         commit('SET_INTRODUCTION', description)
-        commit('SET_PERMISSION', permissions)
         data.roles = ['admin']
         resolve(data)
       }).catch(error => {
@@ -94,7 +79,6 @@ const actions = {
       logout(state.token).then(() => {
         commit('SET_TOKEN', '')
         commit('SET_ROLES', [])
-        commit('SET_PERMISSION', [])
         removeToken()
         resetRouter()
         resolve()
