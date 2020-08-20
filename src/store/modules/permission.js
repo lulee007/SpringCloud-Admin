@@ -1,5 +1,6 @@
 import { asyncRoutes, constantRoutes } from '@/router'
-
+import { validatenull, validateURL } from '@/utils/validate'
+import { GetMenu } from '@/api/menu'
 /**
  * Use meta.role to determine if the current user has permission
  * @param roles
@@ -43,6 +44,9 @@ const mutations = {
   SET_ROUTES: (state, routes) => {
     state.addRoutes = routes
     state.routes = constantRoutes.concat(routes)
+  },
+  ADD_ROUTERS: (state, addRouters) => {
+    state.routers = constantRoutes.concat(addRouters)
   }
 }
 
@@ -57,6 +61,28 @@ const actions = {
       }
       commit('SET_ROUTES', accessedRoutes)
       resolve(accessedRoutes)
+    })
+  },
+  GetMenu({ commit }) {
+    return new Promise(resolve => {
+      GetMenu().then((res) => {
+        const data = res.data
+        data.forEach(ele => {
+          if (ele.children) {
+            ele.children.forEach(child => {
+              if (!validatenull(child.component)) {
+                if (validateURL(child.path)) {
+                  child.path = `${child.path}`
+                } else {
+                  child.path = `${ele.path}/${child.path}`
+                }
+              }
+            })
+          }
+        })
+        commit('SET_ROUTERS', data)
+        resolve(data)
+      })
     })
   }
 }

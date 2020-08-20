@@ -46,6 +46,14 @@ const organizationRouter = {
         title: '路由管理',
         icon: 'guide'
       }
+    }, {
+      path: '/organization/resource',
+      component: () => import('@/views/organization/resource'),
+      name: 'Resource',
+      meta: {
+        title: '资源管理',
+        icon: 'tree-table'
+      }
     }
   ]
 }

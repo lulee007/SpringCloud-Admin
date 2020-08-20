@@ -82,6 +82,10 @@ springcloud-admin是以[vue-element-admin](http://panjiachen.github.io/vue-eleme
 - Markdown2html
 ```
 
+## install
+## source ~/.bash_profile
+## nvm use —delete-prefix 10.
+
 ## 开发
 ```bash
 # 克隆项目

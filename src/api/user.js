@@ -28,8 +28,8 @@ export function getInfo(token) {
 
 export function logout() {
   return Promise.resolve({
-    code: "000000",
-    mesg: "成功",
-    time: new Date(),
+    code: '000000',
+    mesg: '成功',
+    time: new Date()
   })
 }
