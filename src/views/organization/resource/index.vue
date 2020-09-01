@@ -3,17 +3,24 @@
 
     <div class="filter-container">
       <el-input
+        v-model="listQuery.name"
+        style="width: 150px;"
+        class="filter-item"
+        placeholder="资源名称"
+        @keyup.enter.native="handleFilter"
+      />
+      <el-input
         v-model="listQuery.type"
-        style="width: 200px;"
+        style="width: 150px;"
         class="filter-item"
         placeholder="资源类型"
         @keyup.enter.native="handleFilter"
       />
       <el-input
         v-model="listQuery.method"
-        style="width: 200px;"
+        style="width: 120px;"
         class="filter-item"
-        placeholder="资源请求方法"
+        placeholder="请求方法"
         @keyup.enter.native="handleFilter"
       />
       <el-input
@@ -21,13 +28,6 @@
         style="width: 200px;"
         class="filter-item"
         placeholder="资源URL"
-        @keyup.enter.native="handleFilter"
-      />
-      <el-input
-        v-model="listQuery.name"
-        style="width: 200px;"
-        class="filter-item"
-        placeholder="资源名称"
         @keyup.enter.native="handleFilter"
       />
 
