@@ -40,3 +40,17 @@ export function refreshGateway() {
     method: 'post'
   })
 }
+
+export function getAllApiDocs() {
+  return request({
+    url: 'swagger-resources',
+    method: 'get'
+  })
+}
+
+export function getApiDocsByServerUrl(serverUrl) {
+  return request({
+    url: serverUrl,
+    method: 'get'
+  })
+}

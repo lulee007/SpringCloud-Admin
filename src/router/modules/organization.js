@@ -38,13 +38,23 @@ const organizationRouter = {
         title: '组织架构',
         icon: 'group'
       }
-    }, {
+    },
+    {
       path: '/organization/gateway',
       component: () => import('@/views/organization/gateway'),
       name: 'Gateway',
       meta: {
         title: '路由管理',
         icon: 'guide'
+      }
+    },
+    {
+      path: '/organization/resource',
+      component: () => import('@/views/organization/resource'),
+      name: 'Resource',
+      meta: {
+        title: '资源管理',
+        icon: 'skill'
       }
     }
   ]
